@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Environment Variablesa way to determine where a program is located (for shell) 1$ echo $PATH  the command will present a list of paths 12$ which echo&#x2F;usr&#x2F;bin&#x2F;echo  Paths1$ pwd  the command will return">
+<meta name="description" content="several basic commands using shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Missing Semester - L1 - The Shell">
 <meta property="og:url" content="http://example.com/2023/03/18/Missing-Semester-L1-The-Shell/index.html">
 <meta property="og:site_name" content="Daniel&#39;s Blog">
-<meta property="og:description" content="Environment Variablesa way to determine where a program is located (for shell) 1$ echo $PATH  the command will present a list of paths 12$ which echo&#x2F;usr&#x2F;bin&#x2F;echo  Paths1$ pwd  the command will return">
+<meta property="og:description" content="several basic commands using shell">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-18T13:16:29.000Z">
-<meta property="article:modified_time" content="2023-03-18T13:56:12.683Z">
+<meta property="article:modified_time" content="2023-03-19T06:55:33.744Z">
 <meta property="article:author" content="Daniel Lue">
 <meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary">
@@ -338,6 +338,10 @@
           
 
           
+              <div class="post-description">
+                  several basic commands using shell
+              </div>
+          
 
         </div>
       </header>
@@ -364,9 +368,38 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
 
 <p>navigate to the directory you were previously in</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> --<span class="built_in">help</span></span><br><span class="line">Usage: <span class="built_in">ls</span> [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
 
-<p>most programs implement this</p>
+<p>most programs implement this. ‘flag’ means anything that doesn’t take a value, or it is called an ‘option’.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mv</span> dotfiles.md foo.md</span><br><span class="line">$ <span class="built_in">cp</span> dotfiles.md ../food.md</span><br></pre></td></tr></table></figure>
+
+<p>the first command is used to change the location and the name of a file; the second one is ‘copy’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">rmdir</span> ./foo_dir</span><br><span class="line">$ <span class="built_in">rm</span> -r(--recursive) ./foo_dir</span><br></pre></td></tr></table></figure>
+
+<p>the first command is to remove an empty directory while the second one means remove recursively</p>
+<h2 id="Rewiring"><a href="#Rewiring" class="headerlink" title="Rewiring"></a>Rewiring</h2><h3 id="rewiring-by-‘-lt-’-and-‘-gt-’"><a href="#rewiring-by-‘-lt-’-and-‘-gt-’" class="headerlink" title="rewiring by ‘&lt;’ and ‘&gt;’"></a>rewiring by ‘&lt;’ and ‘&gt;’</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> hello &gt; hello.txt</span><br><span class="line">$ <span class="built_in">cat</span> hello.txt</span><br><span class="line">$ <span class="built_in">cat</span> &lt; hello.txt &gt; hello2.txt</span><br></pre></td></tr></table></figure>
+
+<p>rewire the input or output stream; last command shows another way to copy</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> &lt; hello.txt &gt;&gt; hello2.txt</span><br></pre></td></tr></table></figure>
+
+<p>append rather than overwrite</p>
+<h3 id="rewiring-by-pipe-‘-’"><a href="#rewiring-by-pipe-‘-’" class="headerlink" title="rewiring by pipe ‘|’"></a>rewiring by pipe ‘|’</h3><p>semantics: take the output of the program to the left and make it the input of the program to the right</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> -l / | <span class="built_in">tail</span> -n 2</span><br></pre></td></tr></table></figure>
+
+<p>pipe can be used for textual data, images, videos and so on. (to be introduced later)</p>
+<h2 id="Other-Handy-Tools"><a href="#Other-Handy-Tools" class="headerlink" title="Other Handy Tools"></a>Other Handy Tools</h2><p>check manual pages</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>Also, ‘Ctrl + L’ is a handy keyboard shortcut to clear the terminal.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo</span><br><span class="line">$ sudo su</span><br><span class="line"><span class="comment"># echo 500 &gt; brightness</span></span><br></pre></td></tr></table></figure>
+
+<p>do the following things as the super user; second command means switch into a root terminal, which is indicated by a symbol ‘#’.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> 500 | sudo <span class="built_in">tee</span> brightness</span><br></pre></td></tr></table></figure>
+
+<p>‘tee’ command takes its input and writes it to a file and also the terminal.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xdg-open lectures.html</span><br></pre></td></tr></table></figure>
+
+<p>open the file in the appropriate program.</p>
 
       
     </div>
@@ -393,22 +426,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2023/03/16/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -482,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -493,7 +510,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -504,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -537,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Environment-Variables"><span class="nav-number">1.</span> <span class="nav-text">Environment Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Paths"><span class="nav-number">2.</span> <span class="nav-text">Paths</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Environment-Variables"><span class="nav-number">1.</span> <span class="nav-text">Environment Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Paths"><span class="nav-number">2.</span> <span class="nav-text">Paths</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rewiring"><span class="nav-number">3.</span> <span class="nav-text">Rewiring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rewiring-by-%E2%80%98-lt-%E2%80%99-and-%E2%80%98-gt-%E2%80%99"><span class="nav-number">3.1.</span> <span class="nav-text">rewiring by ‘&lt;’ and ‘&gt;’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rewiring-by-pipe-%E2%80%98-%E2%80%99"><span class="nav-number">3.2.</span> <span class="nav-text">rewiring by pipe ‘|’</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Handy-Tools"><span class="nav-number">4.</span> <span class="nav-text">Other Handy Tools</span></a></li></ol></div>
             
 
           </div>
